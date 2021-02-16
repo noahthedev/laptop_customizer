@@ -53,7 +53,7 @@ export default class FeatureList extends React.Component {
           feature={feature} 
           key={idx}
           idx={idx} 
-          features={this.props.features}
+          features={FEATURES}
           selected={this.props.selected}
           onSelectItem={this.props.onSelectItem}/>
       )
