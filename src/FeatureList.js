@@ -9,6 +9,7 @@ export default class FeatureList extends React.Component {
       return (
         <FeatureListItem 
           feature={feature} 
+          key={idx}
           idx={idx} 
           features={this.props.features}
           selected={this.props.selected}
