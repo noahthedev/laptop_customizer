@@ -1,31 +1,19 @@
 import React from 'react';
-import slugify from 'slugify';
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
+import ItemOption from './ItemOption.js'
 
 export default class FeatureListItem extends React.Component {
   
   render() {
     const featureHash = this.props.feature + '-' + this.props.idx;
-    const options = this.props.features[this.props.feature].map(item => {
-      const itemHash = slugify(JSON.stringify(item));
+    const options = this.props.features[this.props.feature].map((item, idx) => {
       return (
-        <div key={itemHash} className="feature__item">
-          <input
-            type="radio"
-            id={itemHash}
-            className="feature__option"
-            name={slugify(this.props.feature)}
-            checked={item.name === this.props.selected[this.props.feature].name}
-            onChange={e => this.props.onSelectItem(this.props.feature, item)}
-          />
-          <label htmlFor={itemHash} className="feature__label">
-            {item.name} ({USCurrencyFormat.format(item.cost)})
-          </label>
-        </div>
-      );
+        <ItemOption
+          item={item}
+          key={idx}
+          feature={this.props.feature}
+          selected={this.props.selected}
+          onSelectItem={this.props.onSelectItem}/>
+      )
     });
 
     return (
@@ -36,5 +24,5 @@ export default class FeatureListItem extends React.Component {
         {options}
       </fieldset>
     );
-  };
-};
+  }  
+}

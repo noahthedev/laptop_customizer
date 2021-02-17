@@ -1,10 +1,6 @@
 import React from 'react';
 import CartItem from './CartItem';
 import CartTotal from './CartTotal';
-const USCurrencyFormat = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD'
-});
 
 export default class Cart extends React.Component {
 
@@ -13,6 +9,7 @@ export default class Cart extends React.Component {
       return (
         <CartItem
           feature={feature}
+          key={idx}
           idx={idx}
           selected={this.props.selected}/>
       )
